@@ -1,0 +1,26 @@
+[package]
+name = "encryptme"
+version = "0.1.0"
+edition = "2021"
+authors = ["Jesse Amarquaye <engineeramarquaye@gmail.com>"]
+license = "MIT OR Apache-2.0"
+description = "Encryptme is a command-line utility to encrypt and decrypt files and directories recursively. Written in rust 🦀."
+readme = "README.md"
+homepage = "https://github.com/amarquaye/encryptme"
+repository = "https://github.com/amarquaye/encryptme"
+keywords = ["cli", "utility", "tool", "linux", "terminal", "encryption", "security"]
+categories = ["command-line-utilities"]
+
+[dependencies]
+anyhow = { version = "1.0.95", features = ["backtrace"] }
+clap = { version = "4.5.23", features = ["cargo", "derive", "unicode", "wrap_help"] }
+aes-gcm = "0.10.3"
+rand = "0.8.5"
+colored = "2.2.0"
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+opt-level = 3
+strip = true
